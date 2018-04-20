@@ -24,9 +24,6 @@ VALUES ("Milk", "Groceries", 2.99,100),
 ("Dog Food", "Pets", 21.23,47),
 ("Shampoo", "Personal Care", 4.97,25),
 ("AA Batteries", "Electronics", 10.36,100),
-("Bicycle","Sporting Goods",89.63,0)
-
-;
-
+("Bicycle","Sporting Goods",89.63,0);
 
 SELECT*FROM products;

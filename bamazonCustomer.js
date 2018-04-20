@@ -12,11 +12,6 @@ const connection = mysql.createConnection({
   database: 'bamazon_db'
 });
 
-
-
-
-
-
 function displayCatalog() {
   const statement = 'SELECT * from  products where stock_quantity>0';
   return new Promise(function (resolve, reject) {
@@ -28,20 +23,11 @@ function displayCatalog() {
   })
 }
 
-
-
-
-
-
-
-
-
-
 const questions = {
   order: [{
     type: "prompt",
     name: "id",
-    message: "please enter id for item you'd lile to buy",
+    message: "please enter id for item you'd like to buy",
     validate: function (choice) {
       if (Number.isInteger(parseInt(choice))) return true
       return "please enter valid item id"
@@ -56,13 +42,6 @@ const questions = {
     }
   }]
 }
-
-
-
-
-
-
-
 
 function checkOrder(selections) {
   const statement = 'SELECT * from  products where item_id = ' + selections.id + ' and stock_quantity >= ' + selections.qty + ' ;'
@@ -79,14 +58,6 @@ function checkOrder(selections) {
 
 }
 
-
-
-
-
-
-
-
-
 function processOrder(details) {
   const item = details.response[0];
   const qty = details.order.qty;
@@ -100,17 +71,10 @@ function processOrder(details) {
   return "Insufficient quantity"
 }
 
-
-
-
-
-
-
-
 function updateDB(order, stock) {
   console.log(order)
   console.log(stock)
-  const statement=`update products set stock_quantity = ${stock - order.qty} where item_id = ${order.id};`;
+  const statement = `update products set stock_quantity = ${stock - order.qty} where item_id = ${order.id};`;
   return new Promise(function (resolve, reject) {
     connection.query(statement, function (error, results, fields) {
       if (error) reject(error)
@@ -118,22 +82,6 @@ function updateDB(order, stock) {
     })
   })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 connection.connect();
 displayCatalog()
