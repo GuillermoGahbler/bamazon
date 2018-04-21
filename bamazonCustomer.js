@@ -101,3 +101,5 @@ displayCatalog()
   .then(function () {
     connection.end();
   })
+
+  
